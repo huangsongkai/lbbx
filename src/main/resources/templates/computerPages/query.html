@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>查看卖车信息</title>
+    <link rel="stylesheet" type="text/css" href="/js/jquery-easyui-1.5.1/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/js/jquery-easyui-1.5.1/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/js/jquery-easyui-1.5.1/demo/demo.css">
+    <script type="text/javascript" src="/js/jquery-easyui-1.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+</head>
+<body>
+<h2>卖车信息</h2>
+<div style="margin:20px 0;"></div>
+
+<table id="tt">
+        <!--//id="tt"  class="easyui-datagrid" title="卖车信息"-->
+      <!--// data-options="singleSelect:true,collapsible:true,url:'/iphone/query/1',method:'get'"pagination="true"*/-->
+
+    <!--<thead>-->
+    <!--<tr>-->
+        <!--<th data-options="field:'id',align:'center',fitColumns:'true'">ID</th>-->
+        <!--<th data-options="field:'name',align:'center',fitColumns:'true'">姓名</th>-->
+        <!--<th data-options="field:'iphone',align:'center',fitColumns:'true'">电话</th>-->
+        <!--<th data-options="field:'brand',align:'center',fitColumns:'true'">品牌</th>-->
+        <!--<th data-options="field:'model',align:'center',fitColumns:'true'">型号</th>-->
+        <!--<th data-options="field:'colour',align:'center',fitColumns:'true'">车辆颜色</th>-->
+        <!--<th data-options="field:'vehiclelocation',align:'center',fitColumns:'true'">车辆所在地</th>-->
+        <!--<th data-options="field:'purchasedate',align:'center',fitColumns:'true'">车辆购买日期</th>-->
+        <!--<th data-options="field:'mileage',align:'center',fitColumns:'true'">里程</th>-->
+        <!--<th data-options="field:'transmissioncase',align:'center',fitColumns:'true'">变速箱类型</th>-->
+        <!--<th data-options="field:'displacement',align:'center',fitColumns:'true'">排量</th>-->
+        <!--<th data-options="field:'emissionstandard',align:'center',fitColumns:'true'">排放标准</th>-->
+        <!--<th data-options="field:'price',align:'center',fitColumns:'true'">出售价格</th>-->
+        <!--<th data-options="field:'remarks',align:'center',fitColumns:'true'" >备注</th>-->
+        <!--&lt;!&ndash;<th data-options="field:'picturesList',align:'center',display:'none'"></th>&ndash;&gt;-->
+    <!--</tr>-->
+    <!--</thead>-->
+</table>
+<div id="dlg"></div>
+<script>
+    $("#tt").datagrid({
+        width:1024,
+        height:600,
+        idField:'id',
+        url:'/iphone/query/1',
+        singleSelect:true,
+        method: 'GET',
+        columns:[[
+            {field:'id',title:'Id',align:'center'},
+            {field:'name',title:'姓名',align:'center'},
+            {field:'brand',title:'品牌',align:'center'},
+            {field:'model',title:'型号',align:'center'},
+            {field:'colour',title:'车辆颜色',align:'center'},
+            {field:'vehiclelocation',title:'车辆所在地',align:'center'},
+            {field:'purchasedate',title:'车辆购买日期',align:'center'},
+            {field:'mileage',title:'里程',align:'center'},
+            {field:'transmissioncase',title:'变速箱类型',align:'center'},
+            {field:'displacement',title:'排量',align:'center'},
+            {field:'emissionstandard',title:'排放标准',align:'center'},
+            {field:'price',title:'出售价格',align:'center'},
+            {field:'remarks',title:'备注',align:'center'},
+            {field:'picturesList',title:'照片对象',align:'center'},
+            {field:'opt',title:'操作',align:'center',
+                formatter:function(value,row,index){
+                    var s = '<a href="#" mce_href="#" onclick="view(\''+ index + '\')">查看图片</a> ';
+//                    var e = '<a href="#" mce_href="#" onclick="edit(\''+ rec.xsbh + '\')">编辑</a> ';
+                    var d = '<a href="#" mce_href="#" onclick="del(\''+ index +'\')">删除</a> ';
+                    return s+d;
+                }
+            }
+        ]],
+        pagination: true,
+        pageSize: 10,
+        pageList: [10, 20, 30],
+        onLoadSuccess:function(data){
+           $("#tt").datagrid("hideColumn", "picturesList"); // 设置隐藏列
+        }
+//        onClickRow: function (index, row) {
+//            var imgs = "  <button type=\"button\" id=\"downloadButten\" onclick = \"clickCheckLogin();\">下载图片</button> </BR>";
+//            if (row){
+//                var pictures = row.picturesList;
+//                for(var i=0,l=pictures.length;i<l;i++){
+//                    imgs += "<img src=\""+pictures[i].base+"\"/>" ;
+//                }
+//                if(imgs){
+//                    $('#dlg').html(imgs);
+//                    $('#dlg').dialog({
+//                        title: '卖车图片',
+//                        width: 600,
+//                        height: 600     ,
+//                        closed: false,
+//                        cache: false,
+//                        modal: true
+//                    });
+//                }else{
+//                    alert("暂无图片")
+//                }
+//            }
+//
+//        }
+
+    });
+
+    function clickCheckLogin(){
+        var row = $('#tt').datagrid('getSelected');
+        var form = $("<form>");
+        form.attr('style', 'display:none');
+        form.attr('target', '');
+        form.attr('method', 'post');
+        form.attr('action', '/iphone/downImgs/'+row.id);
+        var input1 = $('<input>');
+        input1.attr('type', 'hidden');
+        input1.attr('name', 'type');
+        input1.attr('value', 'Export');
+        var input2 = $('<input>');
+        input2.attr('type', 'hidden');
+        input2.attr('name', 'fileId');
+        input2.attr('value', 'fileId');
+        $('body').append(form);
+        form.append(input1);
+        form.append(input2);
+        form.submit();
+        form.remove();
+    }
+    function view(index){
+        var row = $('#tt').datagrid('getData').rows[index];
+            var imgs = "  <button type=\"button\" id=\"downloadButten\" onclick = \"clickCheckLogin();\">下载图片</button> </BR>";
+            if (row){
+                var pictures = row.picturesList;
+                for(var i=0,l=pictures.length;i<l;i++){
+                    imgs += "<img src=\""+pictures[i].base+"\"/>" ;
+                }
+                if(imgs){
+                    $('#dlg').html(imgs);
+                    $('#dlg').dialog({
+                        title: '卖车图片',
+                        width: 600,
+                        height: 600     ,
+                        closed: false,
+                        cache: false,
+                        modal: true
+                    });
+                }else{
+                    alert("暂无图片")
+                }
+            }
+    }
+    function del(index){  //删除操作
+        $.messager.confirm('确认','确认删除?',function(row){
+            if(row){
+                var row = $('#tt').datagrid('getData').rows[index];  //获取选中行
+                $.ajax({
+                    type:'POST',
+                    url:'/iphone/delete/'+row.id,
+//加了个type，作用是以后不管什么删除，都可以转到这个ashx中处理
+                    success:function(){alert('删除成功');}
+                });
+                $('#tt').datagrid('deleteRow',index);
+            }
+        })
+    }
+//        $("#downloadButten").clickCheckLogin(function () {
+//
+//    });
+//        onClickRow: function aaa(rowIndex, rowData) {}
+//    var row = $('#tt').datagrid('getSelected');
+//    if (row){
+//        var pictures = row.picturesList;
+//        alert('Item ID:'+row.picturesList+"");
+//        for(var i=0,l=pictures.length;i<l;i++){
+//            for(var key in pictures[i]){
+//                alert(key.base);
+//
+//            }
+//        }
+//
+//    }
+
+</script>
+</body>
+</html>

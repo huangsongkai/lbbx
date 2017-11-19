@@ -1,0 +1,356 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!--#include file="../abc/1.html"-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/weui/1.1.1/style/weui.css">
+    <link rel="stylesheet" href="http://weixin.yoby123.cn/weui/style/weui3.css">
+    <link rel="stylesheet" href="http://weixin.yoby123.cn/weui/style/weui2.css">
+    <link rel="stylesheet" href="http://weixin.yoby123.cn/weui/style/weui.css">
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.3.0/weui.css" />
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+    <script src="http://weixin.yoby123.cn/weui/zepto.min.js"></script>
+
+</head>
+
+<script>
+    $(function(){
+
+
+    });
+</script>
+</head>
+<style>
+    .weui_label {
+        display: block;
+        width: 6em;
+    }
+</style>
+<body  style="background-color: #f8f8f8;">
+<div class="weui-toptips weui-toptips_warn js_tooltips">请完整填写表单</div>
+<form name="form" id="form">
+    <div class="weui_cells_title">添加车辆信息</div>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name="name" class="weui_input" required placeholder="请输入姓名"/>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name="iphone" class="weui_input" type="tel" required pattern="[0-9]{11}" maxlength="11" placeholder="输入你现在的手机号" emptyTips="请输入手机号" notMatchTips="请输入正确的手机号">
+            </div>
+            <div class="weui_cell_ft">
+                <i class="weui_icon_warn"></i>
+            </div>
+        </div>
+
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">品牌</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name= "brand"class="weui_input" required placeholder="请输入品牌"/>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">型号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name="model" class="weui_input" required placeholder="请输入型号"/>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">颜色</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name="colour" class="weui_input" required placeholder="请输入颜色"/>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">车辆所在地</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name="vehiclelocation" class="weui_input" required  placeholder="车辆所在地"/>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label for="" class="weui_label">购买日期</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name="purchasedate" class="weui_input" type="date" value=""/>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">里程</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name="mileage" class="weui_input" type="“number" placeholder="请输入里程"/>
+            </div>
+        </div>
+
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cells_title">变速箱</div>
+            <div class="weui_cells weui_cells_radio">
+                <label class="weui_cell weui_check_label" for="x11">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>手动</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        <input type="radio" value="手动" class="weui_check" name="transmissioncase" id="x11">
+                        <span class="weui_icon_checked"></span>
+                    </div>
+                </label>
+                <label class="weui_cell weui_check_label" for="x12">
+
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>自动</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        <input type="radio" value="自动" name="transmissioncase" class="weui_check" id="x12" checked="checked">
+                        <span class="weui_icon_checked"></span>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="weui_cell"  >
+            <div class="weui_cell_hd"><label class="weui_label">排量</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name="displacement" class="weui_input" required  placeholder="请输入排量"/>
+            </div>
+        </div>
+
+        <div class="weui_cell"  >
+            <div class="weui_cell_hd"><label class="weui_label">排放标准</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name="emissionstandard" class="weui_input" placeholder="请输入排放标准"/>
+            </div>
+        </div>
+
+        <div class="weui_cell"  >
+            <div class="weui_cell_hd"><label class="weui_label">出售价格</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name="price" class="weui_input" type="“number" placeholder="请输入出售价格"/>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <input name="remarks" class="weui_input" placeholder="请输入备注" type="text">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="weui_cells_title">上传车辆图片</div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <div class="weui_uploader">
+                        <div class="weui_uploader_hd weui_cell">
+                            <div class="weui_cell_bd weui_cell_primary">图片上传</div>
+                            <div class="weui_cell_ft js_counter">0/6</div>
+                        </div>
+                        <div class="weui_uploader_bd">
+                            <ul class="weui_uploader_files">
+                                <!-- 预览图插入到这 --> </ul>
+                            <div class="weui_uploader_input_wrp">
+                                <input class="weui_uploader_input js_file" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weui_dialog_alert" style="display: none;">
+        <div class="weui_mask"></div>
+        <div class="weui_dialog">
+            <div class="weui_dialog_hd"> <strong class="weui_dialog_title">警告</strong>
+            </div>
+            <div class="weui_dialog_bd">弹窗内容，告知当前页面信息等</div>
+            <div class="weui_dialog_ft">
+                <a href="javascript:;" class="weui_btn_dialog primary">确定</a>
+            </div>
+        </div>
+    </div>
+    <div class="weui_btn_area">
+        <a id="formSubmitBtn" href="javascript:" class="weui_btn weui_btn_primary" >提交</a>
+    </div>
+</form>
+<script>
+    var $tooltips = $('.js_tooltips'); //获取头部错误提示
+    var imgbase64list=new Array();
+    $("#formSubmitBtn").on("click", function() {
+        $.confirm("您确定要提交吗?", "提交确认?", function () {
+            var $form = $("#form");
+            $form.form();
+            $form.validate(function(error){
+                if(error){
+                }else{
+
+                    var data = {};
+                    var data1 = "";
+                    var josnArry=[];
+                    $("form").serializeArray().map(function (x) {
+                        if (data[x.name] !== undefined) {
+                            if (!data[x.name].push) {
+                                data[x.name] = [data[x.name]];
+                            }
+                            data[x.name].push(x.value || '');
+                        } else {
+                            data[x.name] = x.value || '';
+                        }
+                    });
+
+                    for(var i=0;i<imgbase64list.length;i++){
+                        data1="{\"base\":\""+imgbase64list[i]+"\"}";
+                        //console.log("拼接的数组"+data1);
+                        josnArry.push(JSON.parse(data1))
+                        //console.log("JSON对象"+JSON.parse(data1));
+                    }
+                    data['picturesList'] = josnArry;
+                    console.log(JSON.stringify(data));
+                    ajax(JSON.stringify(data));
+                }
+            });
+        }, function () {
+            //取消操作
+        });
+    });
+
+
+    //==========================================================================
+    function ajax(data) {
+        $.ajax({
+            type: "post",
+            dataType: 'json',
+            contentType: 'application/json',
+            data: data,
+            url: "/iphone/save",
+            success: function (data) {
+                location.href = "/iphone/ok";
+            },
+            error: function (data) {
+                location.href = "/iphone/ok";
+            }
+        });
+    }
+
+
+    var shuliang = 0;
+    function addpicture(base64){
+        //alert(shuliang);
+        imgbase64list[shuliang]=base64;
+        shuliang++;
+    }
+
+
+    //        $('#button').on('click', function(){
+    //            var data = $('form').serialize();
+    //            var content = JSON.stringify(data).replace(/"/gi, '').replace(/&/gi, '<br>');
+    //            $.weui.alert(content);
+    //            $.post('/api/v1/user', data).error(function(err){
+    //                console.log(err);
+    //            });
+    //        });
+
+    $.weui = {};
+    $.weui.alert = function(options){
+        options = $.extend({title: '警告', text: '警告内容'}, options);
+        var $alert = $('.weui_dialog_alert');
+        $alert.find('.weui_dialog_title').text(options.title);
+        $alert.find('.weui_dialog_bd').text(options.text);
+        $alert.on('touchend click', '.weui_btn_dialog', function(){
+            $alert.hide();
+        });
+        $alert.show();
+    };
+
+    $(function () {
+        // 允许上传的图片类型
+        var allowTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
+        // 1024KB，也就是 1MB
+        var maxSize = 1024 * 1024 * 10;
+        // 图片最大宽度
+        var maxWidth = 1024;
+        // 最大上传图片数量
+        var maxCount = 6;
+        $('.js_file').on('change', function (event) {
+            var files = event.target.files;
+
+            // 如果没有选中文件，直接返回
+            if (files.length === 0) {
+                return;
+            }
+
+            for (var i = 0, len = files.length; i < len; i++) {
+                var file = files[i];
+                var reader = new FileReader();
+
+                // 如果类型不在允许的类型范围内
+                if (allowTypes.indexOf(file.type) === -1) {
+                    $.weui.alert({text: '该类型不允许上传'});
+                    continue;
+                }
+
+                if (file.size > maxSize) {
+                    $.weui.alert({text: '图片太大，不允许上传'});
+                    continue;
+                }
+
+                if ($('.weui_uploader_file').length > maxCount) {
+                    $.weui.alert({text: '最多只能上传' + maxCount + '张图片'});
+                    return;
+                }
+
+                reader.onload = function (e) {
+                    var img = new Image();
+                    img.onload = function () {
+                        // 不要超出最大宽度
+                        var w = Math.min(maxWidth, img.width);
+                        // 高度按比例计算
+                        var h = img.height * (w / img.width);
+                        var canvas = document.createElement('canvas');
+                        var ctx = canvas.getContext('2d');
+                        // 设置 canvas 的宽度和高度
+                        canvas.width = w;
+                        canvas.height = h;
+                        ctx.drawImage(img, 0, 0, w, h);
+                        var base64 = canvas.toDataURL('image/png');
+                        addpicture(base64);
+                        // 插入到预览区
+                        var $preview = $('<li class="weui_uploader_file weui_uploader_status" style="background-image:url(' + base64 + ')"><div class="weui_uploader_status_content">0%</div></li>');
+                        $('.weui_uploader_files').append($preview);
+                        var num = $('.weui_uploader_file').length;
+                        $('.js_counter').text(num + '/' + maxCount);
+                        // 然后假装在上传，可以post base64格式，也可以构造blob对象上传，也可以用微信JSSDK上传
+                        var progress = 0;
+                        function uploading() {
+                            $preview.find('.weui_uploader_status_content').text(++progress + '%');
+                            if (progress < 100) {
+                                setTimeout(uploading, 30);
+                            }
+                            else {
+                                // 如果是失败，塞一个失败图标
+                                //$preview.find('.weui_uploader_status_content').html('<i class="weui_icon_warn"></i>');
+                                $preview.removeClass('weui_uploader_status').find('.weui_uploader_status_content').remove();
+                            }
+                        }
+                        setTimeout(uploading, 30);
+                    };
+
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+</script>
+</body>
+</html>
